@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitwerx Labs • Tools</title>
+  <title>Unique Tools — Bitwerx Labs</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; }
@@ -15,8 +15,8 @@
   <div class="max-w-5xl mx-auto p-8 pt-12">
     <header class="mb-12 flex justify-between items-start">
       <div>
-        <h1 class="text-4xl font-bold tracking-tight">Bitwerx Labs</h1>
-        <p class="text-emerald-400 text-xl">Internal Tools Hub</p>
+        <h1 class="text-4xl font-bold tracking-tight">Unique Tools</h1>
+        <p class="text-emerald-400 text-xl">Bitwerx Labs Internal Hub</p>
         <p class="text-xs text-zinc-500 mt-1">Cloud Migration • May 2026</p>
       </div>
       <a href="https://bitwerxlabs.com" class="text-zinc-400 hover:text-white text-sm flex items-center gap-1">
@@ -29,12 +29,33 @@
       <a href="revenue-audit.html" class="tool-card bg-zinc-900 border border-emerald-900 rounded-3xl p-8 group">
         <div class="inline px-3 py-1 text-xs font-mono bg-emerald-500/10 text-emerald-400 rounded-full mb-4">REVENUE • LIVE</div>
         <h2 class="text-2xl font-semibold mb-3">Revenue Layer Audit</h2>
-        <p class="text-zinc-400">Complete portfolio monetization tracker • 10 products • 6 revenue streams each • Pre-populated</p>
+        <p class="text-zinc-400">10-product portfolio • 6 revenue streams each • Pre-populated by Grok + Claude</p>
         <div class="mt-8 text-emerald-400 text-sm font-medium group-hover:translate-x-2 transition">Open Tool →</div>
       </a>
 
       <!-- Master Context -->
       <div onclick="copyHandoff()" class="tool-card bg-zinc-900 border border-sky-900 rounded-3xl p-8 group cursor-pointer">
+        <div class="inline px-3 py-1 text-xs font-mono bg-sky-500/10 text-sky-400 rounded-full mb-4">CONTINUITY • READY</div>
+        <h2 class="text-2xl font-semibold mb-3">Master Context + Grok Recall</h2>
+        <p class="text-zinc-400">Full portfolio state document + Grok memory recall prompt</p>
+        <div class="mt-8 text-sky-400 text-sm font-medium group-hover:translate-x-2 transition">Copy Prompts →</div>
+      </div>
+    </div>
+
+    <footer class="mt-20 text-center text-xs text-zinc-500">
+      uniquetools.netlify.app • Unique Tools by Bitwerx Labs
+    </footer>
+  </div>
+
+  <script>
+    function copyHandoff() {
+      const text = "**Unique Tools — Master Context Handoff**\n\nPaste the full master context document here or ask Grok/Claude to recall it.";
+      navigator.clipboard.writeText(text);
+      alert("✅ Master Context + Grok Recall copied!\nPaste into Grok or Claude.");
+    }
+  </script>
+</body>
+</html>      <div onclick="copyHandoff()" class="tool-card bg-zinc-900 border border-sky-900 rounded-3xl p-8 group cursor-pointer">
         <div class="inline px-3 py-1 text-xs font-mono bg-sky-500/10 text-sky-400 rounded-full mb-4">CONTINUITY • READY</div>
         <h2 class="text-2xl font-semibold mb-3">Master Context + Grok Recall</h2>
         <p class="text-zinc-400">Full portfolio state document and Grok memory recall prompt for perfect session handoff</p>
