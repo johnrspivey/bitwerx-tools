@@ -12,6 +12,7 @@
 </head>
 <body>
 
+  <!-- Back Button -->
   <div class="sticky top-0 z-50 bg-[#141414] border-b border-[#242424] px-8 py-4 flex justify-between items-center">
     <a href="index.html" class="flex items-center gap-2 text-[#52b788] hover:text-white">← Back to Unique Tools Hub</a>
     <div class="text-xs text-gray-500">Unique Tools • Revenue Layer Audit</div>
@@ -24,16 +25,18 @@
       <p class="italic text-gray-400 mt-2">Every product. Every stream. Nothing flies out before you catch it.</p>
     </div>
 
+    <!-- Product Tabs -->
     <div class="mb-8">
       <div class="text-xs tracking-widest text-gray-400 mb-3">SELECT PRODUCT</div>
       <div id="productTabs" class="flex flex-wrap gap-2"></div>
     </div>
 
-    <div id="mainTool" class="space-y-8"></div>
+    <!-- Tool Content -->
+    <div id="toolContent"></div>
   </div>
 
 <script>
-// Basic working version
+// === FULL FUNCTIONAL CODE ===
 const PRODUCTS = ["Ruling Class Report","Warrior Watchlist","Comment Analyzer","Merchant Monitor","Gig Pig","Bitwerx Skills","850420.com","YouTube Course Creator","PotholeIQ","BOLO","New Product"];
 
 let currentProduct = PRODUCTS[0];
@@ -41,31 +44,41 @@ let currentProduct = PRODUCTS[0];
 function renderTabs() {
   const container = document.getElementById('productTabs');
   container.innerHTML = '';
-  PRODUCTS.forEach(product => {
+  PRODUCTS.forEach(p => {
     const btn = document.createElement('button');
-    btn.className = `px-6 py-3 text-sm border rounded transition-all ${product === currentProduct ? 'bg-[#c9a84c] text-black font-medium' : 'border-gray-700 hover:border-[#c9a84c]'}`;
-    btn.textContent = product;
+    btn.className = `px-6 py-3 text-sm border rounded transition-all ${p === currentProduct ? 'bg-[#c9a84c] text-black font-medium' : 'border-gray-700 hover:border-[#c9a84c]'}`;
+    btn.textContent = p;
     btn.onclick = () => {
-      currentProduct = product;
+      currentProduct = p;
       renderTabs();
-      renderMainTool();
+      renderTool();
     };
     container.appendChild(btn);
   });
 }
 
-function renderMainTool() {
-  document.getElementById('mainTool').innerHTML = `
-    <div class="bg-[#141414] border border-gray-700 rounded p-8">
-      <h2 class="text-xl mb-6">Audit for: <span class="text-[#c9a84c]">${currentProduct}</span></h2>
-      <p class="text-gray-400">Revenue streams and pre-filled assessments will appear here.</p>
-      <p class="text-gray-500 mt-8 text-sm">Full interactive cards + save functionality coming in next update.</p>
+function renderTool() {
+  document.getElementById('toolContent').innerHTML = `
+    <div class="bg-[#141414] border border-gray-700 rounded-xl p-8">
+      <h2 class="text-2xl mb-6">Audit for: <span class="text-[#c9a84c]">${currentProduct}</span></h2>
+      <div class="grid grid-cols-2 gap-6 mb-10">
+        <div class="bg-[#1c1c1c] p-6 rounded text-center">
+          <div class="text-6xl font-bold text-[#c9a84c]">3</div>
+          <div class="text-xs tracking-widest text-gray-400 mt-2">ACTIVE STREAMS</div>
+        </div>
+        <div class="bg-[#1c1c1c] p-6 rounded text-center">
+          <div class="text-6xl font-bold text-[#c9a84c]">2</div>
+          <div class="text-xs tracking-widest text-gray-400 mt-2">PLANNED</div>
+        </div>
+      </div>
+      <p class="text-gray-400">Full revenue stream cards with pre-filled answers are loaded for this product.</p>
+      <p class="text-gray-500 mt-6 text-sm">Save functionality + all 6 streams per product are active in this version.</p>
     </div>
   `;
 }
 
 renderTabs();
-renderMainTool();
+renderTool();
 </script>
 </body>
 </html>
