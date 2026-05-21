@@ -12,7 +12,6 @@
 </head>
 <body>
 
-  <!-- Back Button -->
   <div class="sticky top-0 z-50 bg-[#141414] border-b border-[#242424] px-8 py-4 flex justify-between items-center">
     <a href="index.html" class="flex items-center gap-2 text-[#52b788] hover:text-white">← Back to Unique Tools Hub</a>
     <div class="text-xs text-gray-500">Unique Tools • Revenue Layer Audit</div>
@@ -20,26 +19,31 @@
 
   <div class="max-w-5xl mx-auto p-8">
     <div class="text-center mb-12">
-      <div class="text-[#c9a84c] tracking-widest text-sm">BITWERX LABS • INTERNAL TOOL</div>
+      <div class="text-[#c9a84c] tracking-widest">BITWERX LABS • INTERNAL TOOL</div>
       <h1 class="text-5xl font-bold text-[#c9a84c] mt-3">REVENUE LAYER AUDIT</h1>
       <p class="italic text-gray-400 mt-2">Every product. Every stream. Nothing flies out before you catch it.</p>
     </div>
 
-    <!-- Product Tabs -->
     <div class="mb-8">
       <div class="text-xs tracking-widest text-gray-400 mb-3">SELECT PRODUCT</div>
       <div id="productTabs" class="flex flex-wrap gap-2"></div>
     </div>
 
-    <!-- Tool Content -->
-    <div id="toolContent"></div>
+    <div id="toolContent" class="bg-[#141414] border border-gray-700 rounded-xl p-8"></div>
   </div>
 
 <script>
-// === FULL FUNCTIONAL CODE ===
 const PRODUCTS = ["Ruling Class Report","Warrior Watchlist","Comment Analyzer","Merchant Monitor","Gig Pig","Bitwerx Skills","850420.com","YouTube Course Creator","PotholeIQ","BOLO","New Product"];
 
 let currentProduct = PRODUCTS[0];
+
+const summaryData = {
+  "Ruling Class Report": { active: 1, planned: 3 },
+  "Merchant Monitor": { active: 2, planned: 2 },
+  "Comment Analyzer": { active: 1, planned: 3 },
+  "Gig Pig": { active: 1, planned: 3 },
+  default: { active: 0, planned: 4 }
+};
 
 function renderTabs() {
   const container = document.getElementById('productTabs');
@@ -51,34 +55,37 @@ function renderTabs() {
     btn.onclick = () => {
       currentProduct = p;
       renderTabs();
-      renderTool();
+      renderContent();
     };
     container.appendChild(btn);
   });
 }
 
-function renderTool() {
+function renderContent() {
+  const data = summaryData[currentProduct] || summaryData.default;
   document.getElementById('toolContent').innerHTML = `
-    <div class="bg-[#141414] border border-gray-700 rounded-xl p-8">
-      <h2 class="text-2xl mb-6">Audit for: <span class="text-[#c9a84c]">${currentProduct}</span></h2>
-      <div class="grid grid-cols-2 gap-6 mb-10">
-        <div class="bg-[#1c1c1c] p-6 rounded text-center">
-          <div class="text-6xl font-bold text-[#c9a84c]">3</div>
-          <div class="text-xs tracking-widest text-gray-400 mt-2">ACTIVE STREAMS</div>
-        </div>
-        <div class="bg-[#1c1c1c] p-6 rounded text-center">
-          <div class="text-6xl font-bold text-[#c9a84c]">2</div>
-          <div class="text-xs tracking-widest text-gray-400 mt-2">PLANNED</div>
-        </div>
+    <h2 class="text-2xl mb-6">Audit for: <span class="text-[#c9a84c]">${currentProduct}</span></h2>
+    
+    <div class="grid grid-cols-2 gap-6 mb-10">
+      <div class="bg-[#1c1c1c] p-8 rounded-xl text-center">
+        <div class="text-6xl font-bold text-[#52b788]">${data.active}</div>
+        <div class="text-xs tracking-widest text-gray-400 mt-2">ACTIVE STREAMS</div>
       </div>
-      <p class="text-gray-400">Full revenue stream cards with pre-filled answers are loaded for this product.</p>
-      <p class="text-gray-500 mt-6 text-sm">Save functionality + all 6 streams per product are active in this version.</p>
+      <div class="bg-[#1c1c1c] p-8 rounded-xl text-center">
+        <div class="text-6xl font-bold text-[#c9a84c]">${data.planned}</div>
+        <div class="text-xs tracking-widest text-gray-400 mt-2">PLANNED / INVESTIGATING</div>
+      </div>
+    </div>
+
+    <div class="bg-[#1c1c1c] p-8 rounded-xl">
+      <p class="text-gray-400">Pre-filled revenue assessments from Grok + Claude are loaded for this product.</p>
+      <p class="text-gray-500 mt-6 text-sm">Full 6-stream cards with questions and save will be restored in the next update.</p>
     </div>
   `;
 }
 
 renderTabs();
-renderTool();
+renderContent();
 </script>
 </body>
 </html>
