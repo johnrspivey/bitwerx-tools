@@ -3,27 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitwerx Tools</title>
+  <title>Bitwerx Labs • Tools</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; }
+    .tool-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .tool-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4); }
+  </style>
 </head>
-<body class="bg-zinc-950 text-white">
-  <div class="max-w-4xl mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-2">Bitwerx Labs Tools</h1>
-    <p class="text-emerald-400 mb-10">Cloud Migration Hub • May 2026</p>
-    
-    <div class="space-y-6">
-      <a href="revenue-audit.html" class="block bg-zinc-900 p-8 rounded-3xl border border-emerald-900 hover:border-emerald-500">
-        <div class="text-emerald-400 text-sm mb-2">LIVE</div>
-        <h2 class="text-2xl font-semibold">Revenue Layer Audit</h2>
-        <p class="text-zinc-400">Full portfolio monetization tracker • 10 products • 6 streams each</p>
+<body class="bg-zinc-950 text-white min-h-screen">
+  <div class="max-w-5xl mx-auto p-8 pt-12">
+    <header class="mb-12 flex justify-between items-start">
+      <div>
+        <h1 class="text-4xl font-bold tracking-tight">Bitwerx Labs</h1>
+        <p class="text-emerald-400 text-xl">Internal Tools Hub</p>
+        <p class="text-xs text-zinc-500 mt-1">Cloud Migration • May 2026</p>
+      </div>
+      <a href="https://bitwerxlabs.com" class="text-zinc-400 hover:text-white text-sm flex items-center gap-1">
+        ← Back to Analyzer
+      </a>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Revenue Audit -->
+      <a href="revenue-audit.html" class="tool-card bg-zinc-900 border border-emerald-900 rounded-3xl p-8 group">
+        <div class="inline px-3 py-1 text-xs font-mono bg-emerald-500/10 text-emerald-400 rounded-full mb-4">REVENUE • LIVE</div>
+        <h2 class="text-2xl font-semibold mb-3">Revenue Layer Audit</h2>
+        <p class="text-zinc-400">Complete portfolio monetization tracker • 10 products • 6 revenue streams each • Pre-populated</p>
+        <div class="mt-8 text-emerald-400 text-sm font-medium group-hover:translate-x-2 transition">Open Tool →</div>
       </a>
 
-      <div class="block bg-zinc-900 p-8 rounded-3xl border border-zinc-800">
-        <div class="text-sky-400 text-sm mb-2">READY</div>
-        <h2 class="text-2xl font-semibold">Master Context + Grok Recall</h2>
-        <p class="text-zinc-400">Session continuity system</p>
+      <!-- Master Context -->
+      <div onclick="copyHandoff()" class="tool-card bg-zinc-900 border border-sky-900 rounded-3xl p-8 group cursor-pointer">
+        <div class="inline px-3 py-1 text-xs font-mono bg-sky-500/10 text-sky-400 rounded-full mb-4">CONTINUITY • READY</div>
+        <h2 class="text-2xl font-semibold mb-3">Master Context + Grok Recall</h2>
+        <p class="text-zinc-400">Full portfolio state document and Grok memory recall prompt for perfect session handoff</p>
+        <div class="mt-8 text-sky-400 text-sm font-medium group-hover:translate-x-2 transition">Copy Prompts →</div>
       </div>
+
+      <!-- More tools will go here as we build them -->
     </div>
+
+    <footer class="mt-20 text-center text-xs text-zinc-500">
+      uniquetools.netlify.app • Pushing toward full Supabase + Netlify stack
+    </footer>
   </div>
+
+  <script>
+    function copyHandoff() {
+      const promptText = `**Master Context Handoff + Grok Memory Recall**\n\nPaste the full master context document here or ask me to recall it.`;
+      navigator.clipboard.writeText(promptText);
+      alert("✅ Master Context + Grok Recall prompts copied!\nPaste into Grok or Claude.");
+    }
+  </script>
 </body>
 </html>
